@@ -16,7 +16,11 @@ const inventorySchema = new mongoose.Schema({
     type:Number,
     require:[true,'blood quantity is require']
   },
-  organisation:{
+  donorEmail:{
+    type:String,
+    required:[true,'Donor Email is Required']
+  },
+  organisation: {
     type:mongoose.Schema.Types.ObjectId,
     ref:'users',
     required:[true,'organisation is require']
@@ -31,9 +35,10 @@ const inventorySchema = new mongoose.Schema({
   donor:{
     type:mongoose.Schema.Types.ObjectId,
     ref:'users',
-    required: function (){
+    /*required: function (){
        return this.inventoryType === 'in';
-    },
+    },*/
+
   },
 },{
     timestamps:true
